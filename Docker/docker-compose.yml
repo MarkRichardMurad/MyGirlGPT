@@ -1,0 +1,21 @@
+﻿version: '3.8'
+
+services:
+  api-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mygirlgpt-api
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=api_server.py
+      - FLASK_ENV=development
+    volumes:
+      - E:\MyGirlGPT\Workspace:/app/workspace
+    networks:
+      - mygirlgpt-network
+
+networks:
+  mygirlgpt-network:
+    driver: bridge
